@@ -1,0 +1,39 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.4",
+  "version": 2,
+  "components": [
+    {
+      "name": "requests",
+      "version": "2.31.0",
+      "purl": "pkg:pypi/requests@2.31.0",
+      "supplier": {
+        "name": "Python Software Foundation"
+      }
+    },
+    {
+      "name": "certifi",
+      "version": "2023.7.22",
+      "purl": "pkg:pypi/certifi@2023.7.22",
+      "supplier": {
+        "name": "Kenneth Reitz"
+      }
+    },
+    {
+      "name": "colorama",
+      "version": "0.4.6",
+      "purl": "pkg:pypi/colorama@0.4.6",
+      "supplier": {
+        "name": "Jonathan Hartley"
+      }
+    },
+    {
+      "name": "my-company-internal-utils",
+      "version": "1.0.0",
+      "purl": "pkg:pypi/my-company-internal-utils@1.0.0",
+      "supplier": {
+        "name": "Internal Corporate Tooling"
+      }
+    }
+  ]
+}

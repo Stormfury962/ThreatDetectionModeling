@@ -1,0 +1,23 @@
+{
+  "bomFormat": "CycloneDX",
+  "specVersion": "1.4",
+  "version": 1,
+  "components": [
+    {
+      "name": "requests",
+      "version": "2.31.0",
+      "purl": "pkg:pypi/requests@2.31.0",
+      "supplier": {
+        "name": "Python Software Foundation"
+      }
+    },
+    {
+      "name": "certifi",
+      "version": "2023.7.22",
+      "purl": "pkg:pypi/certifi@2023.7.22",
+      "supplier": {
+        "name": "Kenneth Reitz"
+      }
+    }
+  ]
+}

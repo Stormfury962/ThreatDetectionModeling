@@ -42,6 +42,7 @@ def enrich(package_name):
         response = requests.get(pypi_url, timeout=5)
         
         # If it 404s, it might be an internal package OR a typosquatting attempt
+        # Note this will also trigger that the package is new due to defaulting to 0 days of age
         if response.status_code != 200:
             return meta 
             
