@@ -1,0 +1,21 @@
+One potential scenario in which the software supply chain could be compromised is with malicious attacks based in build dependencies. 
+For example, attackers can insert malicious code into setup.py in dependencies that runs at the same permissions as the user running the pip command.
+Dependency.py detects the newly added PyPIython dependencies between two SBOM snapshots and flags potentially risky dependency updates.
+It accomplishes this by:
+    Loading current and previous SBOMs and converting them to DataFrames
+    Finding the newly introduced dependencies by comparing the two
+    Collects the following data:
+        Whether or not the package is on PyPI
+        How old the package is
+        Whether there are known vulnerabilities
+        Whether it forces a source build
+    Scores each package for risk and alerts on packages exceeding a certain threshold
+Potential expansions include the following:
+    We can better check for typosquatting type attacks by implementing a Levenshtein distance calculation between new dependencies and popular packages
+    Check version downloads using a third party (could do this with the PyPI if they hadn't stopped tracking downloads)
+    Check on the status of the maintainers listed in the PyPI data
+
+The program also has some weaknesses:
+    The risk scoring is rather arbitrary and needs input of real world data to be more precise (exact numbers and risk threshold)
+    The script only checks PyPi but does not cover other ecosystems like npm
+    The script will have many false positives when working with trusted private and new packages
