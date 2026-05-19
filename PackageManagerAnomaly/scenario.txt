@@ -1,0 +1,17 @@
+In a similar scenario in which the software supply chain is compromised, attackers can cause a malicious package's install script to spawn shells or scrape credentials.
+dependency.py flags packages that force source builds (no wheel distribution), meaning their setup.py executes at install time. dependency.sql is designed to catch that execution if it spawns malicious behavior, targeting the runtime side of the same attack chain.
+dependency.sql is built to process events from CrowdStrike's ProcessRollup2 events on Windows, but a similar structure can be used for other event types.
+
+The structure is built as follows:
+WITH package_manager_processes AS () isolates the package managers used in the last 24 hours. It uses REGEXP_LIKE to look for standard package managers like pip.
+suspicious_children AS () checks for different types of processes and command line arguments that might be suspicious:
+   Check for Windows utilities like powershell and cmd
+   Check for fetch commands like curl or wget
+   Check for attempts to scrape dev secrets like AWS or npm credentials or tokens
+   Check for suspicious potentially encoded commands, such as base64-encoded PowerShell payloads
+A CASE statement categorizes each detection as one of: ENCODED_EXEC, CRED_HARVEST, PAYLOAD_DOWNLOAD, or SUSPICIOUS_SHELL
+Selects and joins the package manager processes with suspicious children where both events occur on the same machine, share a parent-child process relationship, and happen within 5 minutes of each other to narrow scope.
+
+This structure has a couple of weaknesses:
+   The .exe pattern in the regex makes this query Windows-only
+   The 5-minute join window may miss staged or slow attacks where the malicious payload is delayed.

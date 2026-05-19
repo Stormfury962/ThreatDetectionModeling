@@ -1,5 +1,3 @@
-For a writeup: read requirements.txt
-
 Usage:
 Install required libraries with: pip install -r requirements.txt
 To demonstrate the detection logic without requiring a live codebase, this repository includes two dummy manifests: sbom_previous.json and sbom_current.json.

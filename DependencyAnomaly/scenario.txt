@@ -19,3 +19,4 @@ The program also has some weaknesses:
     The risk scoring is rather arbitrary and needs input of real world data to be more precise (exact numbers and risk threshold)
     The script only checks PyPi but does not cover other ecosystems like npm
     The script will have many false positives when working with trusted private and new packages
+    
