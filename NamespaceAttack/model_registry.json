@@ -1,0 +1,24 @@
+{
+  "models": [
+    {
+      "model_id": "bert-base-uncased",
+      "author": "google-bert"
+    },
+    {
+      "model_id": "gpt2",
+      "author": "openai-community"
+    },
+    {
+      "model_id": "distilbert-base-uncased",
+      "author": "distilbert"
+    },
+    {
+      "model_id": "mistralai/Mistral-7B-v0.1",
+      "author": "mistralai"
+    },
+    {
+      "model_id": "meta-llama/Llama-2-7b-hf",
+      "author": "meta-llama"
+    }
+  ]
+}

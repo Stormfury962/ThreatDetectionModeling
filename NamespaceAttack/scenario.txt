@@ -1,0 +1,11 @@
+As published in https://unit42.paloaltonetworks.com/model-namespace-reuse/#post-155226-_d4opfvjizsu by Itay Saraf and Ofir Balassiano, a newer problem in the AI supply chain is that of Model Namespace Reuse.
+The main problem in this attack is that attackers can re-regeister code on an abandoned namespace and recreate its original path.
+Through this attack vector, attackers can deploy malicious models that can gain permissions they otherwise might not have. 
+
+To protect against this attack vector, namespaceguard.py queries Hugging Face's API against the stored registry and references author names to ensure fidelity.
+
+Limitations of Namespace Integrity Checks:
+namespaceguard.py detects three cases: author account deletion, model deletion, and namespace transfer to a new author. However, it does not catch attacks where the namespace an author remain intact but the model's configuration is replaced.
+
+Hash/SHA Pinning
+Namespace integrity checks should be paired with pinning model revisions by commit SHA. HuggingFace assigns a unique SHA to each model commit, accessible via its API. By storing the expected SHA in the registry and comparing it against the live value, we can detect attacks more accurately.
