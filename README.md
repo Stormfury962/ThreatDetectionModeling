@@ -1,4 +1,4 @@
-# slingshotapplication
+
 Demonstrate compromised scenarios in software supply chain and offer potential threat detection models
 
 Scenarios and writeup are contained within scenario.txt in each folder
